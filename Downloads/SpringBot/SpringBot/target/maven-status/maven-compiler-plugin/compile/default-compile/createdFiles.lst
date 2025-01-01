@@ -1,0 +1,4 @@
+com\bot\SpringBot\SpringBotApplication.class
+com\bot\SpringBot\QnAService.class
+com\bot\SpringBot\WebConfig.class
+com\bot\SpringBot\AIController.class
