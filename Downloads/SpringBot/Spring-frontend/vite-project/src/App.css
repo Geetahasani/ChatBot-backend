@@ -1,0 +1,44 @@
+/* App.css */
+body {
+  background-image: url('https://images.unsplash.com/photo-1695144244472-a4543101ef35?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YWklMjBiYWNrZ3JvdW5kfGVufDB8fDB8fHww'); 
+  background-size: cover; 
+  background-position: center; 
+  
+  background-repeat: no-repeat; /* Prevents tiling */
+  background-attachment: fixed;
+  
+  /* Ensure the background covers the entire viewport */
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  
+  /* Fix potential scrolling issues */
+  overflow-x: hidden;
+}
+
+/* Typewriter effect */
+.typewriter {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1.2rem;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 0.15em solid #fff; /* simulating the cursor */
+  width: 0;
+  animation: typing 4s steps(30) infinite, blink 0.75s step-end infinite;
+}
+
+@keyframes typing {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+@keyframes blink {
+  50% {
+    border-color: transparent;
+  }
+}
+
