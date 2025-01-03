@@ -1,22 +1,31 @@
 package com.bot.SpringBot;
 
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.servlet.config.annotation.CorsRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+import org.springframework.web.filter.CorsFilter;
 
 @Configuration
-public class WebConfig implements WebMvcConfigurer {
+public class WebConfig {
     
-    @Override
-    public void addCorsMappings(CorsRegistry registry) {
-        registry.addMapping("/**")
-                .allowedOrigins(
-                    "http://localhost:5173",
-                    "https://ornate-rugelach-dabffc.netlify.app"  // Added https://
-                )
-                .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
-                .allowedHeaders("*")
-                .allowCredentials(true)
-                .maxAge(3600); // Added cache duration for CORS preflight
+    @Bean
+    public CorsFilter corsFilter() {
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        CorsConfiguration config = new CorsConfiguration();
+        
+        // Allow all origins for testing (you can restrict this later)
+        config.addAllowedOrigin("https://ornate-rugelach-dabffc.netlify.app");
+        config.addAllowedOrigin("http://localhost:5173");
+        
+        // Allow all headers and methods
+        config.addAllowedHeader("*");
+        config.addAllowedMethod("*");
+        
+        // Allow credentials
+        config.setAllowCredentials(true);
+        
+        source.registerCorsConfiguration("/**", config);
+        return new CorsFilter(source);
     }
 }
